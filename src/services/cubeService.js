@@ -1,45 +1,18 @@
-const { error } = require('console')
-const fs = require('fs/promises')
+const Cube = require("../models/Cube")
 
-const path = require('path')
-const filePath = path.resolve(__dirname, '..', 'data', 'db.json')
 
 
 
 async function getAllCubes(queries) {
 
-    try {
-        const result = await fs.readFile(filePath, 'utf-8')
-        let cubes =  JSON.parse(result.slice())
-        if(queries.search) {
-           
-            cubes = cubes.filter(c => c.name.toLowerCase().includes(queries.search.toLowerCase()))
-        }
-
-        if(queries.from) {
-           
-            cubes = cubes.filter(c => c.difficultyLevel >= queries.from)
-        }
-        if(queries.to) {
-           
-            cubes = cubes.filter(c => c.difficultyLevel <= queries.to)
-        }
-
-        return cubes
-
-    } catch (error) {
-        console.log(error)
-    }
+  return Cube.find().lean()
+        
+        
 }
 
-async function saveCubes(cubes) {
-    try {
-        await fs.writeFile(filePath, cubes)
-
-
-    } catch (error) {
-        console.log(error)
-    }
+ function createCube(cubeData) {
+   return  Cube.create(cubeData)
+   
 }
 
 async function getOneCube(cubeId) {
@@ -57,6 +30,6 @@ async function getOneCube(cubeId) {
 
 module.exports = {
     getAllCubes,
-    saveCubes,
-    getOneCube
+    getOneCube,
+    createCube
 }

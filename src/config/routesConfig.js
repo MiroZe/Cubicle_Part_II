@@ -1,5 +1,5 @@
 const accessoryController = require('../controllers/accesoryController')
-const cubeController = require('../controllers/cubeConreoller')
+const cubeController = require('../controllers/cubeController')
 const homeController = require('../controllers/homeController')
 
 
