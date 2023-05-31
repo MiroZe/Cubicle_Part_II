@@ -5,13 +5,11 @@ const homeController = require('express').Router();
 
 
 homeController.get('/', async (req,res) => {
-    const allCubes = await getAllCubes()
-    console.log(allCubes);
-    
-    
-    
-    
+
+    const allCubes = await getAllCubes().lean()
     res.render('home', {allCubes})
+
+    
 })
 
 homeController.get('/about', (req,res) => {

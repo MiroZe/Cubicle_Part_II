@@ -27,7 +27,7 @@ cubeController.post('/create', async (req,res) => {
 
 cubeController.get('/:cubeId/details', async (req,res) => {
 
-    const cube = await getOneCube(req.params.cubeId)
+    const cube = await getOneCube(req.params.cubeId).lean()
    
     
     res.render('details', {cube})

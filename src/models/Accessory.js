@@ -13,4 +13,4 @@ const accessorySchema = new Schema({
 
 const Accessory = model('Accessory', accessorySchema);
 
-module.export = Accessory
+module.exports = Accessory

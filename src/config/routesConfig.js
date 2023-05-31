@@ -10,7 +10,7 @@ const routesConfig = (app) => {
 
     app.use('/', homeController)
     app.use('/cube', cubeController)
-    app.use('/accesories',accessoryController)
+    app.use('/accessories',accessoryController)
     app.get('*', (req,res) => {
         res.redirect('/404')
     })

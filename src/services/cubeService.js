@@ -2,10 +2,10 @@ const Cube = require("../models/Cube")
 
 
 
+function getAllCubes() {
 
-async function getAllCubes(queries) {
+ return Cube.find({})
 
-  return Cube.find().lean()
         
         
 }
@@ -15,15 +15,11 @@ async function getAllCubes(queries) {
    
 }
 
-async function getOneCube(cubeId) {
-    try {
-        const result = await fs.readFile(filePath, 'utf-8')
-        const found = JSON.parse(result)
-        return found.find(c => c.id == cubeId); 
+ function getOneCube(cubeId) {
+ 
+     return Cube.findById(cubeId)   
         
-    } catch (error) {
-        console.log(error);
-    }
+    
 }
 
 
