@@ -30,4 +30,12 @@ accessoryController.post('/create', async (req,res)=> {
 })
 
 
+accessoryController.get('/attach', (req,res)=> {
+    res.render('accessories/attachAccessory', {
+        title: 'Attach Accesory'
+    })
+
+})
+
+
 module.exports = accessoryController
