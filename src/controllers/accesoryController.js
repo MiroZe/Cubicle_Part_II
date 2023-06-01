@@ -1,4 +1,4 @@
-const { createAccesory } = require('../services/accessoryService');
+const { createAccesory, getAllAccesories } = require('../services/accessoryService');
 
 const accessoryController = require('express').Router();
 
@@ -30,12 +30,7 @@ accessoryController.post('/create', async (req,res)=> {
 })
 
 
-accessoryController.get('/attach', (req,res)=> {
-    res.render('accessories/attachAccessory', {
-        title: 'Attach Accesory'
-    })
 
-})
 
 
 module.exports = accessoryController
