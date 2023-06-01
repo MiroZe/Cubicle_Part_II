@@ -1,4 +1,4 @@
-const accessoryController = require('../controllers/accesoryController')
+const accessoryController = require('../controllers/accessoryController')
 const cubeController = require('../controllers/cubeController')
 const homeController = require('../controllers/homeController')
 

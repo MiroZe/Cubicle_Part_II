@@ -1,6 +1,6 @@
 const cubeController = require('express').Router();
-const { getAllAccesories } = require('../services/accessoryService');
-const { getAllCubes, saveCubes, getOneCube, createCube, addAccessory, getOneWithAccessories } = require('../services/cubeService');
+const { getAllAccesories, getUnattachedAccessories } = require('../services/accessoryService');
+const {  getOneCube, createCube, addAccessory, getOneCubeWithAccesories,  } = require('../services/cubeService');
 
 
 
@@ -28,7 +28,7 @@ cubeController.post('/create', async (req,res) => {
 
 cubeController.get('/:cubeId/details', async (req,res) => {
 
-    const cube = await getOneCube(req.params.cubeId)
+    const cube = await getOneCubeWithAccesories(req.params.cubeId)
     
    
     
@@ -39,7 +39,7 @@ cubeController.get('/:cubeId/details', async (req,res) => {
 cubeController.get('/:cubeId/accessories/attach', async (req,res) => {
 
     const cube = await getOneCube(req.params.cubeId).lean()
-    const allAccessories = await getAllAccesories().lean()
+    const allAccessories = await getUnattachedAccessories(cube.accessories).lean()
     
    
     
@@ -53,7 +53,7 @@ cubeController.post('/:cubeId/accessories/attach', async (req,res) => {
     
    
     
-    //res.redirect(`/cube/${cubeId}/details`)
+    res.redirect(`/cube/${req.params.cubeId}/details`)
 
 })
 

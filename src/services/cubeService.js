@@ -16,7 +16,14 @@ function getAllCubes() {
    
 }
 
- const getOneCube = async (cubeId) => await Cube.findById(cubeId).populate('accessories').lean()
+ function getOneCube (cubeId) {
+    return Cube.findById(cubeId)
+ }
+ 
+ function getOneCubeWithAccesories (cubeId) {
+
+ return getOneCube(cubeId).populate('accessories').lean()
+ }   
 
         
     
@@ -37,5 +44,6 @@ module.exports = {
     getOneCube,
     createCube,
     addAccessory,
+    getOneCubeWithAccesories
    
 }

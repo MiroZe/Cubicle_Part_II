@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Attach Accessory</title>
-    <link href="./css/site.css" type="text/css" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.png" />
+    <link href="/css/site.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
 </head>
 
 
@@ -14,6 +14,7 @@
 <div class="form">
     <h2>{{cube.name}}</h2>
     <img class="cube" src="{{cube.imageUrl}}">
+        {{#if allAccessories}}
     <form action="" method="post">
        
         <label for="accessory">Accessories</label>
@@ -24,6 +25,8 @@
         </select>
         <input type="submit" value="Attach">
     </form>
+    {{else}}
     <h3 class="italic">This cube has all available accessories so far or there is no available at all...
+        {{/if}}
     </h3>
     <a class="btn" href="/cube/{{cube._id}}/details">Back</a>

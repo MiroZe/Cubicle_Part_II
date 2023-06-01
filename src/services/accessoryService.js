@@ -14,11 +14,16 @@ const Accessory = require("../models/Accessory");
     Accessory.create({name, description, imageUrl})
  }
 
+ function getUnattachedAccessories (aIds) {
+   return Accessory.find({_id: {$nin :aIds }})
+ }
+
 
  
 
 
  module.exports = {
     getAllAccesories,
-    createAccesory
+    createAccesory,
+    getUnattachedAccessories
  }

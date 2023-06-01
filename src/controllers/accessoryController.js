@@ -1,4 +1,4 @@
-const { createAccesory, getAllAccesories } = require('../services/accessoryService');
+const { createAccesory: createAccessory } = require('../services/accessoryService');
 
 const accessoryController = require('express').Router();
 
@@ -18,7 +18,7 @@ accessoryController.post('/create', async (req,res)=> {
 
 
     const {name, description, imageUrl} = req.body;
-    await createAccesory(name, description, imageUrl)
+    await createAccessory(name, description, imageUrl)
     res.redirect('/')
 
     
