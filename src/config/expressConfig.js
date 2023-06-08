@@ -1,6 +1,7 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const hasUser = require('../middlewares/hasUser');
 
 
 
@@ -13,6 +14,7 @@ const expressConfig = (app) => {
     app.set('views', 'src/views')
     app.use(express.static('src/public'))
     app.use(cookieParser())
+    app.use(hasUser)
 
 
 }

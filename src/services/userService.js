@@ -2,11 +2,23 @@ const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const jwtSign = require('../utils.js/jwt')
 
-const JWT_SECRET = 'ffgwet9809798hjhjkfhajs'
+const {JWT_SECRET} = require('../utils.js/const')
 
 
 
-async function login() {
+async function login(username, password) {
+
+    const existingUser = await User.findOne({username}).collation({locale:'en', strength:2}) 
+    if(!existingUser) {
+        throw new Error('Username does not exist or password is incorrect ')
+    }
+
+    const passcheck = bcrypt.compare(password, existingUser.hashedPassword)
+    if(!passcheck) {
+        throw new Error('Username does not exist or password is incorrect ')
+    }
+
+    return createToken(existingUser)
 
 
 }
